@@ -56,23 +56,45 @@ function Answers(currentlist, answer) {
 }
 
 const nextButton = document.getElementById("next-button");
-const result = document.getElementById("result");
-const scoreDisplay = document.getElementById("score-section");
+ const quizEndSection = document.getElementById("quiz-end");
+ const quizResultText = document.getElementById("quiz-result");
+const startSection = document.getElementById('start-section');
+const startButton = document.getElementById('start-button');
+const quizSection = document.getElementById('quiz-section');
+
+
+
+startButton.onclick = () => {
+    startSection.style.display = 'none';
+    quizSection.style.display = 'block';
+    nextButton.style.display = 'block';
+    loadQuestion();
+};
 
 nextButton.onclick = () => {
      if (currentQuestionIndex < questions.length - 1) {
         currentQuestionIndex++;
         loadQuestion();
+
+
      } else {
         showScore();
      }
     }
-function showScore() {   
-    document.getElementById("quiz-section").classList.add("display: none");
-    document.getElementById("Next-button").classList.add("hidden");
-    scorecontainer.classList.remove("hidden");
-
-    scoretext.textContent = `You scored ${score} out of ${questions.length}`;
+const restartButton = document.getElementById("restart-button");
+restartButton.onclick = () => {
+    currentQuestionIndex = 0;
+    score = 0;
+    quizSection.style.display = 'block';
+    nextButton.style.display = 'block';
+    quizEndSection.style.display = 'none';
+    loadQuestion();
 }
 
-loadQuestion();
+function showScore() {   
+    quizSection.style.display = 'none';
+    nextButton.style.display = 'none';
+    quizEndSection.style.display = 'block';
+
+    quizResultText.textContent = `You scored ${score} out of ${questions.length}`;
+}

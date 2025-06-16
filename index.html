@@ -11,12 +11,17 @@
 <body>
     <div class="container">
         <h1>Quiz Application</h1>
-        <div id="quiz-section">
+        <div id="start-section">
+            <h1>Start Quiz</h1>
+            <button id="start-button">Start</button>
+        </div>
+
+        <div id="quiz-section" style="display: none;">
             <p id="quiz-question"> Loading Question...</p>
             <ul id="quiz-list"></ul>
         </div>
 
-        <button id="next-button">Next Question</button>
+        <button id="next-button" style="display: none;">Next Question</button>
 
         <div class="score-container" id="quiz-end" style="display: none;">
 
